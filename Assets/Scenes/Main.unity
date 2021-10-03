@@ -1914,7 +1914,7 @@ MonoBehaviour:
   blinking: 0
   blinkTime: 0.5
   t: 0
-  indicatorName: key:Q
+  indicatorName: btn:left
 --- !u!212 &1236028350
 SpriteRenderer:
   m_ObjectHideFlags: 0

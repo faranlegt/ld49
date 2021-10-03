@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace Levels.Pasta
 {
-    public class Spaghetti : Level
+    public class SpaghettiLevel : Level
     {
         public float timeToChangeFireSpeed;
         public float initialTimeToChangeFireSpeed = 3f;

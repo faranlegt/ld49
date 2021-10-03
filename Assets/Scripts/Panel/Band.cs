@@ -1,34 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Band : MonoBehaviour
+namespace Panel
 {
-    private SpriteRenderer _renderer;
-    public float maxPosition, minPosition, skipPosition, speed;
-
-    public float minOpacity = 0.3f, maxOpacity = 0.6f;
-
-    public void Start()
+    public class Band : MonoBehaviour
     {
-        _renderer = GetComponent<SpriteRenderer>();
-    }
+        private SpriteRenderer _renderer;
+        public float maxPosition, minPosition, skipPosition, speed;
 
-    public void Update()
-    {
-        var c = _renderer.color;
-        var p = transform.localPosition;
+        public float minOpacity = 0.3f, maxOpacity = 0.6f;
 
-        c.a = minOpacity + (maxOpacity - minOpacity) * ((maxPosition - p.y) / (maxPosition - minPosition));
-        _renderer.color = c;
-        
-        p.y -= speed * Time.deltaTime;
-
-        if (p.y < minPosition - skipPosition)
+        public void Start()
         {
-            p.y = maxPosition;
+            _renderer = GetComponent<SpriteRenderer>();
         }
 
-        transform.localPosition = p;
+        public void Update()
+        {
+            var c = _renderer.color;
+            var p = transform.localPosition;
+
+            c.a = minOpacity + (maxOpacity - minOpacity) * ((maxPosition - p.y) / (maxPosition - minPosition));
+            _renderer.color = c;
+        
+            p.y -= speed * Time.deltaTime;
+
+            if (p.y < minPosition - skipPosition)
+            {
+                p.y = maxPosition;
+            }
+
+            transform.localPosition = p;
+        }
     }
 }

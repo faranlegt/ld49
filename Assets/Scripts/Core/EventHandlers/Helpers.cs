@@ -1,13 +1,17 @@
+using System;
 using Core.EventHandlers.Handlers;
 using Core.Models;
 using UnityEngine;
 
 namespace Core.EventHandlers
 {
-    public static class HandlersExtensions
+    public static class Helpers
     {
         public static InputHandler Then(this InputHandler h1, InputHandler next) =>
             new SequenceInputHandler(h1, next);
+            
+        public static InputHandler Then(this InputHandler h1, Action<InputEvent> reflex) =>
+            new CustomInputHandler(h1.CodeName, h1.HandleInternal, reflex);
 
         public static InputHandler Repeat(this InputHandler h, int times) =>
             new RepeatInputHandler(h, times);
@@ -24,5 +28,11 @@ namespace Core.EventHandlers
 
         public static InputHoldHandler Hold(this KeyCode k, float time) =>
             new InputHoldHandler(k.ToEvent(), time);
+
+        public static CustomInputHandler On(string n, Func<InputEvent, bool?> handle, Action<InputEvent> reflex = null) =>
+            new CustomInputHandler(n, handle, reflex);
+
+        public static CustomInputHandler OnEvent(string name, Action<InputEvent> reflex = null) =>
+            new CustomInputHandler($"trigger:{name}", e => e.value == name, reflex);
     }
 }

@@ -16,6 +16,8 @@ namespace Levels.Pasta
 
         public bool lidOpen = false;
 
+        public override bool IsFailing => needToSalt || needToStir || temperature < 81 || temperature > 89;
+
         public override void Start()
         {
             base.Start();
@@ -26,7 +28,7 @@ namespace Levels.Pasta
                 .WhilePressed(KeyCode.L)
                 .Then(e =>
                 {
-                    if (!lidOpen || !needToSalt) return;
+                    if (!lidOpen || !needToStir) return;
 
                     needToStir = false;
                     Events.Raise(new InputEvent {
@@ -58,14 +60,13 @@ namespace Levels.Pasta
                     .WhilePressed(KeyCode.W)
                     .Then(e =>
                     {
-                        if (lidOpen && needToSalt)
-                        {
-                            needToSalt = false;
-                            Events.Raise(new InputEvent {
-                                type = InputEventType.End,
-                                value = "led:purple"
-                            });
-                        }
+                        if (!lidOpen || !needToSalt) return;
+
+                        needToSalt = false;
+                        Events.Raise(new InputEvent {
+                            type = InputEventType.End,
+                            value = "led:purple"
+                        });
                     })
                     .Named("salt")
             );

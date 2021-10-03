@@ -1,4 +1,4 @@
-namespace Core.KeyHandlers
+namespace Core.EventHandlers
 {
     public struct InputEvent
     {

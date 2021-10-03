@@ -1,7 +1,6 @@
-using UnityEditor;
 using UnityEngine;
 
-namespace Core.KeyHandlers.Handlers
+namespace Core.EventHandlers.Handlers
 {
     public class InputHoldHandler : InputHandler
     {
@@ -16,7 +15,9 @@ namespace Core.KeyHandlers.Handlers
             _targetHoldTime = targetHoldTime;
         }
 
-        protected override bool HandleInternal(InputEvent ev)
+        public override string CodeName => $"hold:{_value}";
+
+        public override bool? HandleInternal(InputEvent ev)
         {
             if (ev.value != _value) return _holdTime > _targetHoldTime;
 
@@ -26,6 +27,7 @@ namespace Core.KeyHandlers.Handlers
                     _holdTime = 0;
                     break;
 
+                case InputEventType.Start:
                 case InputEventType.Continue:
                     _holdTime += Time.deltaTime;
                     break;

@@ -1,4 +1,5 @@
 using Core.EventHandlers;
+using Core.EventHandlers.Handlers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -55,7 +56,7 @@ namespace Levels.Pasta
             );
 
             Events.Register(
-                KeyCode.Q.Pressed()
+                new SinglePressHandler("btn:left")
                     .Repeat(3)
                     .WhilePressed(KeyCode.W)
                     .Then(e =>
@@ -132,7 +133,7 @@ namespace Levels.Pasta
         private void UpdateTemp()
         {
             var temperatureWasOkay = temperature > 81 && temperature < 89;
-            temperature += (userFireSpeed + fireSpeed) * Time.deltaTime;
+            temperature += (userFireSpeed + fireSpeed + (lidOpen ? 2 : 0)) * Time.deltaTime;
             var newTempOkay = temperature > 81 && temperature < 89;
 
             switch (temperatureWasOkay, newTempOkay)

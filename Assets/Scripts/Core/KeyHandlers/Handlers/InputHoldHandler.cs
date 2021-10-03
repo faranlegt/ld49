@@ -3,17 +3,22 @@ using UnityEngine;
 
 namespace Core.KeyHandlers.Handlers
 {
-    [CreateAssetMenu(menuName = "DI/Input/KeyHold")]
     public class InputHoldHandler : InputHandler
     {
-        public string value;
-        public float targetHoldTime;
+        private readonly string _value;
+        private readonly float _targetHoldTime;
         
         private float _holdTime;
 
+        public InputHoldHandler(string value, float targetHoldTime = 1.0f)
+        {
+            _value = value;
+            _targetHoldTime = targetHoldTime;
+        }
+
         protected override bool HandleInternal(InputEvent ev)
         {
-            if (ev.value != value) return _holdTime > targetHoldTime;
+            if (ev.value != _value) return _holdTime > _targetHoldTime;
 
             switch (ev.type)
             {
@@ -26,7 +31,7 @@ namespace Core.KeyHandlers.Handlers
                     break;
             }
 
-            return _holdTime > targetHoldTime;
+            return _holdTime > _targetHoldTime;
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class InputHandler : MonoBehaviour
+    public class InputManger : MonoBehaviour
     {
         public void Raise(InputEvent ev)
         {

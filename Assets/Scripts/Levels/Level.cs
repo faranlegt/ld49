@@ -9,52 +9,30 @@ namespace Levels
 {
     public class Level : MonoBehaviour, IInputEventHandler
     {
-        private void Start()
+        public float levelGoing = 0, fullLevelTime = 60f;
+        protected EventManager Events;
+
+        public virtual void Start()
         {
-            var eventHandler = FindObjectOfType<EventManager>();
-
-            eventHandler.Register(
-                KeyCode.Q.Pressed().Named("press_q")
-            );
-            
-            eventHandler.Register(KeyCode.J.Pressed()
-                .Then(KeyCode.K.Pressed())
-                .WhilePressed(KeyCode.L)
-                .Named("stir")
-            );
-            
-            eventHandler.Register(KeyCode.J.Pressed()
-                .Then(KeyCode.K.Pressed())
-                .Named("stir_test")
-            );
-
-            eventHandler.Register(
-                KeyCode.W.Hold(0.3f)
-                    .Then(
-                        KeyCode.Q.Pressed()
-                            .Repeat(3)
-                            .WhilePressed(KeyCode.W)
-                    )
-                    .Named("salt")
-            );
-
-            eventHandler.Register(
-                KeyCode.N.Pressed().Named("fire_up")
-            );
-            
-            eventHandler.Register(
-                KeyCode.M.Pressed().Named("fire_down")
-            );
-            
-            
-            eventHandler.Register(this);
+            Events = FindObjectOfType<EventManager>();
+            Events.Register(this);
         }
 
         public string CodeName => "level";
 
-        public InputEvent? Handle(InputEvent ev)
+        public virtual InputEvent? Handle(InputEvent ev)
         {
             return null;
+        }
+
+        public virtual void Update()
+        {
+            levelGoing += Time.deltaTime;
+
+            if (levelGoing > fullLevelTime)
+            {
+                
+            }
         }
     }
 }

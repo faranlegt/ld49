@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Editor
 {
-    [CustomPropertyDrawer(typeof(Blit.BlitSettings))]
     public class BlitEditor : PropertyDrawer
     {
         private bool _createdStyles = false;

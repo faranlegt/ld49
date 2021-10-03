@@ -19,7 +19,7 @@ namespace Core.EventHandlers.Handlers
 
         public override bool? HandleInternal(InputEvent ev)
         {
-            if (ev.value != _value) return _holdTime > _targetHoldTime;
+            if (ev.value != _value) return null;
 
             switch (ev.type)
             {

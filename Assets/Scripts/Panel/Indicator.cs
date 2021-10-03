@@ -1,46 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
 using Core;
 using Core.EventHandlers;
 using Core.Models;
 using UnityEngine;
 
-public class Indicator : MonoBehaviour, IInputEventHandler
+namespace Panel
 {
-    public bool on = false;
-
-    public string indicatorName;
-
-    private SpriteRenderer _renderer;
-    private EventManager _events;
-
-    public void Start()
+    public class Indicator : MonoBehaviour, IInputEventHandler
     {
-        _renderer = GetComponent<SpriteRenderer>();
-        _events = FindObjectOfType<EventManager>();
+        public bool on = false, blinkOn;
 
-        _events.Register(this);
-    }
+        public bool blinking;
+        public float blinkTime = 0.5f, t;
 
-    public void Update()
-    {
-        _renderer.enabled = on;
-    }
+        public string indicatorName;
 
-    public string CodeName { get; }
+        private SpriteRenderer _renderer;
+        private EventManager _events;
 
-    public InputEvent? Handle(InputEvent ev)
-    {
-        if (ev.value == indicatorName && ev.type == InputEventType.Start)
+        public void Start()
         {
-            on = true;
+            _renderer = GetComponent<SpriteRenderer>();
+            _events = FindObjectOfType<EventManager>();
+
+            _events.Register(this);
         }
 
-        if (ev.value == indicatorName && ev.type == InputEventType.End)
+        public void Update()
         {
-            on = false;
+            if (on && blinking)
+            {
+                _renderer.enabled = blinkOn;
+                t -= Time.deltaTime;
+                
+                if (t < 0)
+                {
+                    t = blinkTime;
+                    blinkOn = !blinkOn;
+                }
+            }
+            else
+            {
+                _renderer.enabled = on;
+            }
         }
+
+        public string CodeName { get; }
+
+        public InputEvent? Handle(InputEvent ev)
+        {
+            if (ev.value == indicatorName && ev.type == InputEventType.Start)
+            {
+                on = true;
+            }
+
+            if (ev.value == indicatorName && ev.type == InputEventType.End)
+            {
+                on = false;
+            }
         
-        return null;
+            return null;
+        }
     }
 }

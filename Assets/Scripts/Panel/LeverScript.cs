@@ -22,13 +22,18 @@ public class LeverScript : MonoBehaviour
     {
         isUp = !isUp;
         anim = 4;
+
+        _events.Raise(new InputEvent()
+        {
+            type = InputEventType.Once,
+            value = "lever-" + (isUp ? "up" : "down")
+        });
     }
 
     private void OnMouseUp()
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
         _renderer.sprite =

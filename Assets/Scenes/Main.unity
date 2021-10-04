@@ -1540,6 +1540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1043595186}
   - component: {fileID: 1043595187}
+  - component: {fileID: 1043595188}
   m_Layer: 6
   m_Name: l1_fire_S
   m_TagString: Untagged
@@ -1612,6 +1613,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1043595188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043595185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a517eb4ed4e4480838b5653eec4a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1056704553
 GameObject:
   m_ObjectHideFlags: 0

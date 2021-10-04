@@ -314,6 +314,8 @@ GameObject:
   m_Component:
   - component: {fileID: 170978667}
   - component: {fileID: 170978668}
+  - component: {fileID: 170978669}
+  - component: {fileID: 170978670}
   m_Layer: 9
   m_Name: 'Book '
   m_TagString: Untagged
@@ -357,6 +359,61 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 020ddb96a05fd447b8117aca24d3042f, type: 3}
   currentPage: 0
   pageRenderer: {fileID: 225949987}
+--- !u!114 &170978669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170978666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a4745e68fe345a69b466cd86e021b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &170978670
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170978666}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 9.151888, y: 5.158813}
+      - {x: -0.6731391, y: 4.9510098}
+      - {x: 6.7619615, y: 4.0150967}
+      - {x: 6.85009, y: -2.3608594}
+      - {x: 7.5359206, y: -3.1330757}
+      - {x: 6.7728105, y: -3.7560475}
+      - {x: 6.898898, y: -4.452456}
+      - {x: -6.6805696, y: -4.4572186}
+      - {x: -6.731505, y: -3.7999973}
+      - {x: -7.3873634, y: -3.155556}
+      - {x: -6.7479515, y: -2.1677582}
+      - {x: -6.779726, y: 3.7782524}
+      - {x: -6.1590443, y: 4.078931}
+      - {x: -0.96598625, y: 4.863945}
+      - {x: -9.129742, y: 5.117482}
+      - {x: -9.174331, y: -5.166689}
+      - {x: 6.7056994, y: -5.188155}
+      - {x: 9.108276, y: -5.1863713}
 --- !u!1 &184347103
 GameObject:
   m_ObjectHideFlags: 0
@@ -5051,10 +5108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2a5582302e9415eb40d7a025c88273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _music: {fileID: 0}
-  _muffledMusic: {fileID: 0}
-  _cymbal: {fileID: 0}
-  _powerLever: {fileID: 0}
   musicFade: 0
 --- !u!82 &1801087024
 AudioSource:

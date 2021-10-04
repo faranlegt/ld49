@@ -27,10 +27,10 @@ namespace Levels.Pasta
             base.Start();
             _buzzer = FindObjectOfType<BuzzSoundsScript>();
             
-            Events.Register(KeyCode.J.Pressed()
-                .Then(KeyCode.K.Pressed())
+            Events.Register(KeyCode.LeftArrow.Pressed()
+                .Then(KeyCode.RightArrow.Pressed())
                 .Repeat(5)
-                .WhilePressed(KeyCode.L)
+                //.WhilePressed(KeyCode.L)
                 .Then(e =>
                 {
                     if (!lidOpen || !needToStir) return;
@@ -60,7 +60,7 @@ namespace Levels.Pasta
             );
 
             Events.Register(
-                KeyCode.Q.Pressed()
+                KeyCode.E.Pressed()
                     .Repeat(3)
                     .WhilePressed(KeyCode.W)
                     .Then(e =>
@@ -77,11 +77,11 @@ namespace Levels.Pasta
             );
 
             Events.Register(
-                KeyCode.M.Pressed().Then(_ => userFireSpeed++).Named("temp_up")
+                KeyCode.UpArrow.Pressed().Then(_ => userFireSpeed++).Named("temp_up")
             );
 
             Events.Register(
-                KeyCode.N.Pressed().Then(_ => userFireSpeed--).Named("temp_down")
+                KeyCode.DownArrow.Pressed().Then(_ => userFireSpeed--).Named("temp_down")
             );
         }
 

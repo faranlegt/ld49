@@ -14,8 +14,10 @@ public class Spatula : MonoBehaviour
 
     public void Update()
     {
-        var keyCode = isLeft ? KeyCode.J : KeyCode.K;
+        var lidOpen = FindObjectOfType<Levels.Pasta.SpaghettiLevel>().lidOpen;
 
-        _renderer.enabled = Input.GetKey(keyCode) && Input.GetKey(KeyCode.L);
+        var keyCode = isLeft ? KeyCode.LeftArrow : KeyCode.RightArrow;
+
+        _renderer.enabled = Input.GetKey(keyCode) && lidOpen;// && Input.GetKey(KeyCode.K);
     }
 }

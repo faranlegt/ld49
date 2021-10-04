@@ -20,18 +20,19 @@ namespace Levels.Pasta
             events.Register(Helpers.OnEvent("start_open_lid", _ => lidOpening = true));
             events.Register(Helpers.OnEvent("stop_open_lid", _ => lidOpening = false));
 
-            events.Register(Helpers.OnEvent("restart",
-                _ =>
-                {
-                    var r = transform.eulerAngles;
-                    var p = transform.localPosition;
-                    r.z = 0;
-                    p.y = minHeight;
-                    p.x = -1.8f;
-                    transform.localPosition = p;
-                    transform.eulerAngles = r;
-                })
-            );
+            events.Register(Helpers.OnEvent("lever-up", Clear));
+            events.Register(Helpers.OnEvent("lever-down", Clear));
+
+            void Clear(InputEvent _)
+            {
+                var r = transform.eulerAngles;
+                var p = transform.localPosition;
+                r.z = 0;
+                p.y = minHeight;
+                p.x = -1.8f;
+                transform.localPosition = p;
+                transform.eulerAngles = r;
+            }
         }
 
         public void Update()

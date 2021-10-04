@@ -1907,7 +1907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &879590624
 Transform:
   m_ObjectHideFlags: 0
@@ -4550,6 +4550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1628434248}
+  - component: {fileID: 1628434249}
   m_Layer: 0
   m_Name: Monitor
   m_TagString: Untagged
@@ -4574,6 +4575,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1628434249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628434247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6582ee110344ba8854780d22fe1794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelElements: {fileID: 879590623}
 --- !u!1 &1682702247
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,9 +4750,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc66887e8a845799e0fe90cb9ebad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlaying: 0
   failingTime: 0
   levelGoing: 0
   fullLevelTime: 60
+  gameLostSent: 0
   timeToChangeFireSpeed: 0
   initialTimeToChangeFireSpeed: 3
   temperature: 85

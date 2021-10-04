@@ -6,7 +6,7 @@ using Core.EventHandlers.Handlers;
 using Core.Models;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour, IInputEventHandler
+public class LevelMusic : MonoBehaviour, IInputEventHandler
 {
     protected EventManager Events;
     public string CodeName => "level-manager";
@@ -16,12 +16,13 @@ public class LevelManager : MonoBehaviour, IInputEventHandler
 
     [Range(0.0f, 1.0f)]
     public float musicFade = 0f;
-    int fadeDurationMs = 3 * 60;
-    float targetMusicFade = 0f;
+
+    private int _fadeDurationMs = 3 * 60;
+    private float _targetMusicFade = 0f;
 
     // =========================================================================
 
-    void Start()
+    public void Start()
     {
         _muffledMusic = GetComponentsInParent<AudioSource>()[0];
         _music = GetComponentsInParent<AudioSource>()[1];
@@ -35,8 +36,8 @@ public class LevelManager : MonoBehaviour, IInputEventHandler
 
     void Update()
     {
-        if (Mathf.Abs(targetMusicFade - musicFade) > 0.01f)
-        musicFade += Mathf.Sign(targetMusicFade - musicFade) / fadeDurationMs;
+        if (Mathf.Abs(_targetMusicFade - musicFade) > 0.01f)
+            musicFade += Mathf.Sign(_targetMusicFade - musicFade) / _fadeDurationMs;
 
         _music.volume = musicFade;
         _muffledMusic.volume = (1f - musicFade) * .3f;
@@ -44,31 +45,32 @@ public class LevelManager : MonoBehaviour, IInputEventHandler
 
     // =========================================================================
 
-    public void StartLevel()
+    private void StartLevel()
     {
-        targetMusicFade = 1f;
-        fadeDurationMs = 4 * 60;
+        _targetMusicFade = 1f;
+        _fadeDurationMs = 4 * 60;
     }
 
-    public void StopLevel()
+    private void StopLevel()
     {
-        targetMusicFade = 0f;
-        fadeDurationMs = 1 * 60;
+        _targetMusicFade = 0f;
+        _fadeDurationMs = 1 * 60;
         _cymbal.Play();
     }
 
     // =========================================================================
 
-    public virtual InputEvent? Handle(InputEvent ev) {
-
-        if (ev.value == "lever-up")
+    public virtual InputEvent? Handle(InputEvent ev)
+    {
+        switch (ev.value)
         {
-            StartLevel();
-        }
-
-        if (ev.value == "lever-down")
-        {
-            StopLevel();
+            case "lever-up":
+                StartLevel();
+                break;
+            case "lever-down":
+            case "game_lost":
+                StopLevel();
+                break;
         }
 
         return null;

@@ -9,8 +9,10 @@ namespace Levels
 {
     public abstract class Level : MonoBehaviour, IInputEventHandler
     {
+        public bool isPlaying = false;
         public float failingTime = 0;
         public float levelGoing = 0, fullLevelTime = 60f;
+        public bool gameLostSent;
         protected EventManager Events;
 
         public string CodeName => "level";
@@ -21,27 +23,43 @@ namespace Levels
         {
             Events = FindObjectOfType<EventManager>();
             Events.Register(this);
-
-            Events.Register(Helpers.OnEvent("restart",
+            
+            Events.Register(Helpers.OnEvent("lever-up",
                 _ =>
                 {
-                    failingTime = 0;
-                    levelGoing = 0;
-                })
-            );
-            
-            Events.Register(new SinglePressHandler("btn:right").Named("restart"));
+                    ClearLevel();
+                    isPlaying = true;
+                }));
+            Events.Register(Helpers.OnEvent("lever-down", _ => ClearLevel()));
+        }
+
+        public virtual void ClearLevel()
+        {
+            isPlaying = false;
+            failingTime = 0;
+            levelGoing = 0;
+            gameLostSent = false;
         }
 
         public virtual InputEvent? Handle(InputEvent ev) => null;
 
         public virtual void Update()
         {
+            if (!isPlaying) return;
+            
             if (IsFailing)
             {
                 failingTime += Time.deltaTime;
                 if (failingTime > 7)
                 {
+                    if (!gameLostSent)
+                    {
+                        gameLostSent = true;
+                        Events.Raise(new InputEvent {
+                            type = InputEventType.Start,
+                            value = $"game_lost"
+                        });
+                    }
                     return;
                 }
             }

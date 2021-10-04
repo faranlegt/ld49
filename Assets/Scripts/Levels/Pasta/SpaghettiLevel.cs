@@ -7,7 +7,7 @@ namespace Levels.Pasta
 {
     public class SpaghettiLevel : Level
     {
-        BuzzSoundsScript _buzzer = FindObjectOfType<BuzzSoundsScript>();
+        private BuzzSoundsScript _buzzer;
 
         public float timeToChangeFireSpeed;
         public float initialTimeToChangeFireSpeed = 3f;
@@ -25,28 +25,8 @@ namespace Levels.Pasta
         public override void Start()
         {
             base.Start();
-
-            Events.Register(Helpers.OnEvent("restart",
-                _ =>
-                {
-                    needToSalt = false;
-                    needToStir = false;
-                    temperature = 85f;
-                    fireSpeed = 1f;
-                    userFireSpeed = 1;
-                    timeToChangeFireSpeed = 0;
-                    lidOpen = false;
-
-                    foreach (var led in new[] { "green", "yellow", "red", "purple" })
-                    {
-                        Events.Raise(new InputEvent {
-                            type = InputEventType.End,
-                            value = $"led:{led}"
-                        });
-                    }
-                })
-            );
-
+            _buzzer = FindObjectOfType<BuzzSoundsScript>();
+            
             Events.Register(KeyCode.J.Pressed()
                 .Then(KeyCode.K.Pressed())
                 .Repeat(5)
@@ -80,7 +60,7 @@ namespace Levels.Pasta
             );
 
             Events.Register(
-                new SinglePressHandler("btn:left")
+                KeyCode.Q.Pressed()
                     .Repeat(3)
                     .WhilePressed(KeyCode.W)
                     .Then(e =>
@@ -103,6 +83,27 @@ namespace Levels.Pasta
             Events.Register(
                 KeyCode.N.Pressed().Then(_ => userFireSpeed--).Named("temp_down")
             );
+        }
+
+        public override void ClearLevel()
+        {
+            base.ClearLevel();
+            
+            needToSalt = false;
+            needToStir = false;
+            temperature = 85f;
+            fireSpeed = 1f;
+            userFireSpeed = 1;
+            timeToChangeFireSpeed = 0;
+            lidOpen = false;
+
+            foreach (var led in new[] { "green", "yellow", "red", "purple" })
+            {
+                Events.Raise(new InputEvent {
+                    type = InputEventType.End,
+                    value = $"led:{led}"
+                });
+            }
         }
 
         public override void Update()

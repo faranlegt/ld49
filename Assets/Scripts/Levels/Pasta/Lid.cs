@@ -19,6 +19,15 @@ namespace Levels.Pasta
             
             events.Register(Helpers.OnEvent("start_open_lid", _ => lidOpening = true));
             events.Register(Helpers.OnEvent("stop_open_lid", _ => lidOpening = false));
+
+            events.Register(Helpers.OnEvent("restart",
+                _ =>
+                {
+                    var p = transform.localPosition;
+                    p.y = minHeight;
+                    transform.localPosition = p;
+                })
+            );
         }
 
         public void Update()

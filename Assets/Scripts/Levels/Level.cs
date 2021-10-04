@@ -21,13 +21,22 @@ namespace Levels
         {
             Events = FindObjectOfType<EventManager>();
             Events.Register(this);
+
+            Events.Register(Helpers.OnEvent("restart",
+                _ =>
+                {
+                    failingTime = 0;
+                    levelGoing = 0;
+                })
+            );
+            
+            Events.Register(new SinglePressHandler("btn:right").Named("restart"));
         }
 
         public virtual InputEvent? Handle(InputEvent ev) => null;
 
         public virtual void Update()
         {
-            
             if (IsFailing)
             {
                 failingTime += Time.deltaTime;

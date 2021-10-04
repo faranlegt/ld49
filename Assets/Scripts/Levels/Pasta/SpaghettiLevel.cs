@@ -23,6 +23,27 @@ namespace Levels.Pasta
         {
             base.Start();
 
+            Events.Register(Helpers.OnEvent("restart",
+                _ =>
+                {
+                    needToSalt = false;
+                    needToStir = false;
+                    temperature = 85f;
+                    fireSpeed = 1f;
+                    userFireSpeed = 1f;
+                    timeToChangeFireSpeed = 0;
+                    lidOpen = false;
+
+                    foreach (var led in new[] { "green", "yellow", "red", "purple" })
+                    {
+                        Events.Raise(new InputEvent {
+                            type = InputEventType.End,
+                            value = $"led:{led}"
+                        });
+                    }
+                })
+            );
+
             Events.Register(KeyCode.J.Pressed()
                 .Then(KeyCode.K.Pressed())
                 .Repeat(5)

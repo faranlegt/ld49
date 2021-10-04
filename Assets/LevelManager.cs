@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour, IInputEventHandler
     public string CodeName => "level-manager";
 
     public AudioSource _music, _muffledMusic, _cymbal;
+    public GameObject _powerLever;
 
     [Range(0.0f, 1.0f)]
     public float musicFade = 0f;
@@ -26,6 +27,8 @@ public class LevelManager : MonoBehaviour, IInputEventHandler
         _music = GetComponentsInParent<AudioSource>()[1];
         _cymbal = GetComponentsInParent<AudioSource>()[2];
 
+        _powerLever = GameObject.Find("power_lever");
+
         Events = FindObjectOfType<EventManager>();
         Events.Register(this);
     }
@@ -36,7 +39,7 @@ public class LevelManager : MonoBehaviour, IInputEventHandler
         musicFade += Mathf.Sign(targetMusicFade - musicFade) / fadeDurationMs;
 
         _music.volume = musicFade;
-        _muffledMusic.volume = (1f - musicFade) * .4f;
+        _muffledMusic.volume = (1f - musicFade) * .3f;
     }
 
     // =========================================================================
@@ -58,12 +61,12 @@ public class LevelManager : MonoBehaviour, IInputEventHandler
 
     public virtual InputEvent? Handle(InputEvent ev) {
 
-        if (ev.value == "lever-down")
+        if (ev.value == "lever-up")
         {
             StartLevel();
         }
 
-        if (ev.value == "lever-up")
+        if (ev.value == "lever-down")
         {
             StopLevel();
         }

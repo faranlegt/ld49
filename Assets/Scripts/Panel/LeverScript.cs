@@ -8,14 +8,20 @@ public class LeverScript : MonoBehaviour
     private SpriteRenderer _renderer;
     private EventManager _events;
 
-    public bool isUp = true;
+    public bool isUp = false;
     private int anim = 0;
     public Sprite upSprite, downSprite, smudgeSprite;
+
+    public AudioSource _sound_1, _sound_2;
 
     private void Start()
     {
         _renderer = GetComponent<SpriteRenderer>();
+
         _events = FindObjectOfType<EventManager>();
+
+        _sound_1 = GetComponentsInParent<AudioSource>()[0];
+        _sound_2 = GetComponentsInParent<AudioSource>()[1];
     }
 
     private void OnMouseDown()
@@ -28,6 +34,11 @@ public class LeverScript : MonoBehaviour
             type = InputEventType.Once,
             value = "lever-" + (isUp ? "up" : "down")
         });
+
+        if (isUp)
+            _sound_1.Play();
+        else
+            _sound_2.Play();
     }
 
     private void OnMouseUp()

@@ -155,7 +155,7 @@ namespace Levels.Pasta
         private void UpdateTemp()
         {
             var temperatureWasOkay = temperature > 81 && temperature < 89;
-            temperature += (userFireSpeed + fireSpeed + (lidOpen ? 2 : 0)) * Time.deltaTime;
+            temperature += (userFireSpeed + fireSpeed + (lidOpen ? -2 : 0)) * Time.deltaTime;
             var newTempOkay = temperature > 81 && temperature < 89;
 
             switch (temperatureWasOkay, newTempOkay)

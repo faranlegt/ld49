@@ -46,6 +46,12 @@ namespace Levels
         public virtual void Update()
         {
             if (!isPlaying) return;
+
+            if (levelGoing > fullLevelTime)
+            {
+                isPlaying = false;
+                return;
+            }
             
             if (IsFailing)
             {

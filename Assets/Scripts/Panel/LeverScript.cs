@@ -47,6 +47,9 @@ public class LeverScript : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Return))
+            OnMouseDown();
+
         _renderer.sprite =
             anim > 0
                 ? smudgeSprite

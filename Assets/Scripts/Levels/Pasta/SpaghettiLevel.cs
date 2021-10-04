@@ -109,6 +109,8 @@ namespace Levels.Pasta
         public override void Update()
         {
             base.Update();
+            
+            if (!isPlaying) return;
 
             UpdateFireSpeed();
             UpdateTemp();

@@ -32,18 +32,24 @@ namespace Levels.Pasta
 
         public void Update()
         {
+            var r = transform.eulerAngles;
             var p = transform.localPosition;
 
             if (lidOpening && p.y < maxHeight)
             {
                 p.y += Time.deltaTime * speed;
+                p.x -= Time.deltaTime * speed;
+                r.z += Time.deltaTime * speed * 25;
             }
             else if (!lidOpening && p.y > minHeight)
             {
                 p.y -= Time.deltaTime * speed;
+                p.x += Time.deltaTime * speed;
+                r.z -= Time.deltaTime * speed * 25;
             }
 
             transform.localPosition = p;
+            transform.eulerAngles = r;
         }
 
         public InputEvent? Handle(InputEvent ev) => null;

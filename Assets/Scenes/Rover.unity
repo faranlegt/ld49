@@ -487,8 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pages:
-  - {fileID: 21300000, guid: 287df515c2eb5419dba92bf3cd81fcfe, type: 3}
-  - {fileID: 21300000, guid: 020ddb96a05fd447b8117aca24d3042f, type: 3}
+  - {fileID: 21300000, guid: 8fdda624424f84031bb6efcaf4008edf, type: 3}
   currentPage: 0
   pageRenderer: {fileID: 225949987}
 --- !u!1 &184347103
@@ -1980,7 +1979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &879590624
 Transform:
   m_ObjectHideFlags: 0
@@ -2482,6 +2481,81 @@ MonoBehaviour:
   blinkTime: 0.2
   t: 0
   indicatorName: led:yellow
+--- !u!1 &1035964961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1035964964}
+  - component: {fileID: 1035964963}
+  - component: {fileID: 1035964962}
+  m_Layer: 0
+  m_Name: Task1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!60 &1035964962
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035964961}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.0074842, y: 1.1343313}
+      - {x: -0.715977, y: 0.87992454}
+      - {x: -0.41987127, y: -0.79782283}
+      - {x: -0.36372745, y: -1.1112621}
+      - {x: 1.3652446, y: -0.8327983}
+--- !u!114 &1035964963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035964961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435fc30f8fb03463183593e82076eb94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskScene: Main Menu
+--- !u!4 &1035964964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035964961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.37, y: 3.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1056704553
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,7 +3401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   on: 0
   blinkOn: 0
-  blinking: 1
+  blinking: 0
   blinkTime: 0.5
   t: 0
   indicatorName: panel_dust
@@ -3488,7 +3562,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336221345}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4877,6 +4951,10 @@ MonoBehaviour:
   gameLostSent: 0
   isStorm: 0
   panelDust: 0
+  sampleFailing: 0
+  canSeeSample: 0
+  needToCollectSample: 0
+  sample: 
 --- !u!82 &1801087021
 AudioSource:
   m_ObjectHideFlags: 0

@@ -27,14 +27,13 @@ namespace Levels
 
         public virtual void Update()
         {
-            levelGoing += Time.deltaTime;
             
             if (IsFailing)
             {
                 failingTime += Time.deltaTime;
                 if (failingTime > 7)
                 {
-                    failingTime = 7.1f;
+                    return;
                 }
             }
             else
@@ -45,6 +44,7 @@ namespace Levels
                     failingTime = 0;
                 }
             }
+            levelGoing += Time.deltaTime;
 
             Events.Raise(new InputEvent {
                 type = InputEventType.Start,

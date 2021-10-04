@@ -25,6 +25,13 @@ namespace Levels.Pasta
 
             _renderer.color = new Color(1, 1, 1, opacity);
             _renderer.sprite = frames[frame];
+
+            var s = transform.localScale;
+            s.y = 1f + 0.1f * Mathf.Sin(Time.time * 10f);
+            s.y = 1f + 0.05f * Mathf.Sin(Time.time * 10f);
+            
+            transform.localScale = s;
+
         }
     }
 }

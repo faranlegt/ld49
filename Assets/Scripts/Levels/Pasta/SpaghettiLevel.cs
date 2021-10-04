@@ -11,7 +11,8 @@ namespace Levels.Pasta
         public float initialTimeToChangeFireSpeed = 3f;
 
         public float temperature = 85f;
-        public float fireSpeed = 1f, userFireSpeed = 0;
+        public float fireSpeed = 1f;
+        public int userFireSpeed = 0;
 
         public bool needToSalt = false, needToStir = false;
 
@@ -30,7 +31,7 @@ namespace Levels.Pasta
                     needToStir = false;
                     temperature = 85f;
                     fireSpeed = 1f;
-                    userFireSpeed = 1f;
+                    userFireSpeed = 1;
                     timeToChangeFireSpeed = 0;
                     lidOpen = false;
 

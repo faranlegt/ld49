@@ -10,7 +10,7 @@ namespace Levels.Rover
     public class RoverLevel : Level
     {
         private BuzzSoundsScript _buzzer;
-        public override bool IsFailing => broken.Any() || (isStorm && !Input.GetKey(KeyCode.E)) || panelDust || sampleFailing;
+        public override bool IsFailing => broken.Any() || (isStorm && !Input.GetKey(KeyCode.E)) || panelDust;
 
         public bool isStorm, panelDust, sampleFailing, canSeeSample, needToCollectSample;
         public string sample;
@@ -100,13 +100,17 @@ namespace Levels.Rover
             if (Time(8f)) BrakeSomething();
             if (Time(15f)) BrakeSomething();
             if (Time(27f)) BrakeSomething();
+            if (Time(27f)) BrakeSomething();
             if (Time(35f)) BrakeSomething();
             if (Time(48f)) BrakeSomething();
+            if (Time(55f)) BrakeSomething();
 
             if (Time(10)) StartStorm();
             if (Time(20)) EndStorm();
             if (Time(40)) StartStorm();
             if (Time(50)) EndStorm();
+            if (Time(25)) StartStorm();
+            if (Time(35)) EndStorm();
         }
 
         private void StartStorm()
@@ -116,12 +120,6 @@ namespace Levels.Rover
                 value = $"storm"
             });
             isStorm = true;
-        }
-
-        private void Sample(string sName)
-        {
-            
-            sampleFailing = true;
         }
 
         private void EndStorm()

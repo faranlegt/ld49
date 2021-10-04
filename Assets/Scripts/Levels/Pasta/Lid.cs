@@ -23,9 +23,13 @@ namespace Levels.Pasta
             events.Register(Helpers.OnEvent("restart",
                 _ =>
                 {
+                    var r = transform.eulerAngles;
                     var p = transform.localPosition;
+                    r.z = 0;
                     p.y = minHeight;
+                    p.x = -1.8f;
                     transform.localPosition = p;
+                    transform.eulerAngles = r;
                 })
             );
         }

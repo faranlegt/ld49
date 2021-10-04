@@ -7,6 +7,8 @@ namespace Levels.Pasta
 {
     public class SpaghettiLevel : Level
     {
+        BuzzSoundsScript _buzzer = FindObjectOfType<BuzzSoundsScript>();
+
         public float timeToChangeFireSpeed;
         public float initialTimeToChangeFireSpeed = 3f;
 
@@ -115,6 +117,7 @@ namespace Levels.Pasta
 
             if (levelGoing > levelTens && levelGoing - Time.deltaTime < levelTens)
             {
+                _buzzer.Buzz(5);
                 needToStir = true;
                 Events.Raise(new InputEvent() {
                     type = InputEventType.Start,
@@ -161,6 +164,8 @@ namespace Levels.Pasta
             switch (temperatureWasOkay, newTempOkay)
             {
                 case (true, false):
+
+                    _buzzer.Buzz(1);
                     Events.Raise(new InputEvent() {
                         type = InputEventType.Start,
                         value = "led:red"

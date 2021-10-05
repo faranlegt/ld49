@@ -47,13 +47,13 @@ namespace Levels.Rover
             panelDust = false;
 
             foreach (var led in new[] {
-                "green", "yellow", "red", "purple", "storm", "panel_dust"
+                "led:green", "led:yellow", "led:red", "purple", "storm", "panel_dust"
             })
             {
                 Events.Raise(new InputEvent
                 {
                     type = InputEventType.End,
-                    value = $"led:{led}"
+                    value = led
                 });
             }
 

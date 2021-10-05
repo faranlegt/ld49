@@ -3514,7 +3514,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1336221346}
   - component: {fileID: 1336221348}
-  - component: {fileID: 1336221347}
   - component: {fileID: 1336221349}
   m_Layer: 6
   m_Name: panel_dust
@@ -3537,24 +3536,6 @@ Transform:
   m_Father: {fileID: 1835464151}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1336221347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336221345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a36a41fb5b144fbd9dbed9971e4f195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  on: 0
-  blinkOn: 0
-  blinking: 0
-  blinkTime: 0.5
-  t: 0
-  indicatorName: 
 --- !u!212 &1336221348
 SpriteRenderer:
   m_ObjectHideFlags: 0

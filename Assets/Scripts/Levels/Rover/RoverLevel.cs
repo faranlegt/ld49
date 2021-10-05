@@ -43,6 +43,9 @@ namespace Levels.Rover
         {
             base.ClearLevel();
 
+            isStorm = false;
+            panelDust = false;
+
             foreach (var led in new[] {
                 "green", "yellow", "red", "purple", "storm", "panel_dust"
             })
@@ -61,6 +64,8 @@ namespace Levels.Rover
                     value = $"fix:{part}"
                 });
             }
+            
+            broken = new HashSet<string>();
         }
 
         private void RegisterFix(string partName, KeyCode k)

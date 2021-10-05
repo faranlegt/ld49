@@ -40,15 +40,15 @@ public class BrackingPart : MonoBehaviour
         {
             transform.localPosition = startingPoint;
 
-            if (name.Contains("wheel"))
-            {
-                transform.Rotate(Vector3.forward * -0.6f);
-                transform.localPosition = startingPoint +
-                    new Vector3(
-                        0,
-                        Mathf.Sin(t * 0.3f + transform.position.x * 1.5f) * 0.02f,// + Mathf.Cos(t * 0.5f) * 0.02f,
-                        0);
-            }
+            // if (name.Contains("wheel"))
+            // {
+            //     transform.Rotate(Vector3.forward * -0.6f);
+            //     transform.localPosition = startingPoint +
+            //         new Vector3(
+            //             0,
+            //             Mathf.Sin(t * 0.3f + transform.position.x * 1.5f) * 0.02f,// + Mathf.Cos(t * 0.5f) * 0.02f,
+            //             0);
+            // }
         }
     }
 }

@@ -47,7 +47,8 @@ namespace Levels.Rover
                 "green", "yellow", "red", "purple", "storm", "panel_dust"
             })
             {
-                Events.Raise(new InputEvent {
+                Events.Raise(new InputEvent
+                {
                     type = InputEventType.End,
                     value = $"led:{led}"
                 });

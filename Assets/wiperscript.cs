@@ -1,12 +1,11 @@
 using Core;
-using Core.EventHandlers;
+using Core.InputEventHandlers;
 using Core.Models;
 using UnityEngine;
 
-public class wiperscript : MonoBehaviour, IInputEventHandler
+public class wiperscript : MonoBehaviour
 {
     private EventManager _events;
-    public string CodeName => "wiper";
 
     int wipingTicks = 0;
 
@@ -17,15 +16,12 @@ public class wiperscript : MonoBehaviour, IInputEventHandler
         _events.Register(Helpers.OnEvent("panel_dust", _ => wipingTicks = 60));
     }
 
-    
+
     void Update()
     {
-        if (wipingTicks > 0)
-        {
-            wipingTicks--;
-            transform.Rotate(Vector3.forward * -0.1f);
-        } 
-    }
+        if (wipingTicks <= 0) return;
 
-    public InputEvent? Handle(InputEvent ev) => null;
+        wipingTicks--;
+        transform.Rotate(Vector3.forward * -0.1f);
+    }
 }

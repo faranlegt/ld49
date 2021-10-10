@@ -1,4 +1,4 @@
-using Core.EventHandlers;
+using Core.InputEventHandlers;
 
 namespace Core.Models
 {

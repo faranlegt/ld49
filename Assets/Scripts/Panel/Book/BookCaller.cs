@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Panel
+namespace Panel.Book
 {
     public class BookCaller : MonoBehaviour
     {

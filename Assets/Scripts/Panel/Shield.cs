@@ -1,3 +1,4 @@
+using Core.Levels;
 using Levels;
 using UnityEngine;
 
@@ -8,21 +9,21 @@ namespace Panel
         public Sprite lostSprite, wonSprite, shieldSprite;
         private SpriteRenderer _renderer;
 
-        private Level _level;
+        private LevelController _levelController;
 
         public void Start()
         {
             _renderer = GetComponent<SpriteRenderer>();
-            _level = FindObjectOfType<Level>();
+            _levelController = FindObjectOfType<LevelController>();
         }
 
         public void Update()
         {
-            if (_level.levelGoing > _level.fullLevelTime)
+            if (_levelController.levelGoing > _levelController.fullLevelTime)
             {
                 _renderer.sprite = wonSprite;
             }
-            else if (_level.failingTime > 7)
+            else if (_levelController.failingTime > 7)
             {
                 _renderer.sprite = lostSprite;
             }

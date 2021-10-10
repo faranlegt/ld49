@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Core.EventHandlers;
+using Core.InputEventHandlers;
 using Core.Models;
 using UnityEngine;
 

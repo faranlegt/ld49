@@ -1,6 +1,6 @@
 using Core.Models;
 
-namespace Core.EventHandlers
+namespace Core.InputEventHandlers
 {
     public abstract class InputHandler : IInputEventHandler
     {

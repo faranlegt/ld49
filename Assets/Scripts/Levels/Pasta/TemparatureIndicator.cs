@@ -1,5 +1,5 @@
 using Core;
-using Core.EventHandlers;
+using Core.InputEventHandlers;
 using Core.Models;
 using TMPro;
 using UnityEngine;

@@ -5,18 +5,18 @@ namespace Levels.Pasta
     public class Fire : MonoBehaviour
     {
         public Sprite[] frames;
-        private SpaghettiLevel _level;
+        private SpaghettiLevelController _levelController;
         private SpriteRenderer _renderer;
 
         public void Start()
         {
-            _level = FindObjectOfType<SpaghettiLevel>();
+            _levelController = FindObjectOfType<SpaghettiLevelController>();
             _renderer = GetComponent<SpriteRenderer>();
         }
 
         public void Update()
         {
-            var frame = _level.userFireSpeed + 2;
+            var frame = _levelController.userFireSpeed + 2;
             var opacity = 0.5f;
             
             if (frame >= frames.Length - 1) {

@@ -1,25 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BuzzSoundsScript : MonoBehaviour
+namespace Core
 {
-    public AudioClip[] buzzSounds;
-    AudioSource source;
-
-    void Start()
+    public class BuzzSoundsScript : MonoBehaviour
     {
-        source = gameObject.AddComponent<AudioSource>();  
-    }
+        public AudioClip[] buzzSounds;
+        AudioSource source;
 
-    public void Buzz(int index)
-    {
-        source.clip = buzzSounds[index];
-        source.Play();
-    }
+        void Start()
+        {
+            source = gameObject.AddComponent<AudioSource>();  
+        }
+
+        public void Buzz(int index)
+        {
+            source.clip = buzzSounds[index];
+            source.Play();
+        }
     
-    void Update()
-    {
+        void Update()
+        {
         
+        }
     }
 }

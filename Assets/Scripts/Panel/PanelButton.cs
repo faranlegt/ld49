@@ -1,6 +1,6 @@
 using System;
 using Core;
-using Core.EventHandlers;
+using Core.InputEventHandlers;
 using UnityEngine;
 
 namespace Panel

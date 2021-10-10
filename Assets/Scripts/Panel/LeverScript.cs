@@ -1,63 +1,65 @@
-using System;
 using Core;
-using Core.EventHandlers;
+using Core.InputEventHandlers;
 using UnityEngine;
 
-public class LeverScript : MonoBehaviour
+namespace Panel
 {
-    private SpriteRenderer _renderer;
-    private EventManager _events;
-
-    public bool isUp = false;
-    private int anim = 0;
-    public Sprite upSprite, downSprite, smudgeSprite;
-
-    public AudioSource _sound_1, _sound_2;
-
-    private void Start()
+    public class LeverScript : MonoBehaviour
     {
-        _renderer = GetComponent<SpriteRenderer>();
+        private SpriteRenderer _renderer;
+        private EventManager _events;
 
-        _events = FindObjectOfType<EventManager>();
+        public bool isUp = false;
+        private int anim = 0;
+        public Sprite upSprite, downSprite, smudgeSprite;
 
-        _sound_1 = GetComponentsInParent<AudioSource>()[0];
-        _sound_2 = GetComponentsInParent<AudioSource>()[1];
-    }
+        public AudioSource _sound_1, _sound_2;
 
-    private void OnMouseDown()
-    {
-        isUp = !isUp;
-        anim = 4;
-
-        _events.Raise(new InputEvent()
+        private void Start()
         {
-            type = InputEventType.Once,
-            value = "lever-" + (isUp ? "up" : "down")
-        });
+            _renderer = GetComponent<SpriteRenderer>();
 
-        if (isUp)
-            _sound_1.Play();
-        else
-            _sound_2.Play();
-    }
+            _events = FindObjectOfType<EventManager>();
 
-    private void OnMouseUp()
-    {
-    }
+            _sound_1 = GetComponentsInParent<AudioSource>()[0];
+            _sound_2 = GetComponentsInParent<AudioSource>()[1];
+        }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-            OnMouseDown();
+        private void OnMouseDown()
+        {
+            isUp = !isUp;
+            anim = 4;
 
-        _renderer.sprite =
-            anim > 0
-                ? smudgeSprite
-                : isUp
-                    ? upSprite
-                    : downSprite;
+            _events.Raise(new InputEvent()
+            {
+                type = InputEventType.Once,
+                value = "lever-" + (isUp ? "up" : "down")
+            });
 
-        if (anim > 0)
-            anim--;
+            if (isUp)
+                _sound_1.Play();
+            else
+                _sound_2.Play();
+        }
+
+        private void OnMouseUp()
+        {
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+                OnMouseDown();
+
+            _renderer.sprite =
+                anim > 0
+                    ? smudgeSprite
+                    : isUp
+                        ? upSprite
+                        : downSprite;
+
+            if (anim > 0)
+                anim--;
+        }
     }
 }

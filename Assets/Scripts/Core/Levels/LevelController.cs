@@ -1,18 +1,18 @@
-using System;
-using Core;
-using Core.EventHandlers;
-using Core.EventHandlers.Handlers;
+using Core.InputEventHandlers;
 using Core.Models;
 using UnityEngine;
 
-namespace Levels
+namespace Core.Levels
 {
-    public abstract class Level : MonoBehaviour, IInputEventHandler
+    public abstract class LevelController : MonoBehaviour, IInputEventHandler
     {
-        public bool isPlaying = false;
-        public float failingTime = 0;
-        public float levelGoing = 0, fullLevelTime = 60f;
+        public bool isPlaying;
+        public float failingTime;
+        public float levelGoing;
+
+        public float fullLevelTime = 60f;
         public bool gameLostSent;
+        
         protected EventManager Events;
 
         public string CodeName => "level";
@@ -29,7 +29,9 @@ namespace Levels
                 {
                     ClearLevel();
                     isPlaying = true;
-                }));
+                })
+            );
+            
             Events.Register(Helpers.OnEvent("lever-down", _ => ClearLevel()));
         }
 

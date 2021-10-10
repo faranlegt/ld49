@@ -1,9 +1,8 @@
 using System;
-using Core.EventHandlers.Handlers;
-using Core.Models;
+using Core.InputEventHandlers.Handlers;
 using UnityEngine;
 
-namespace Core.EventHandlers
+namespace Core.InputEventHandlers
 {
     public static class Helpers
     {

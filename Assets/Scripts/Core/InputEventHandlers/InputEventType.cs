@@ -1,4 +1,4 @@
-namespace Core.EventHandlers
+namespace Core.InputEventHandlers
 {
     public enum InputEventType
     {

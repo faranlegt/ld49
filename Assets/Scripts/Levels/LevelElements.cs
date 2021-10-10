@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using Core;
-using Core.EventHandlers;
+using Core.InputEventHandlers;
 using UnityEngine;
 
-public class LevelElements : MonoBehaviour
+namespace Levels
 {
-    public GameObject levelElements;
-    
-    public void Start()
+    public class LevelElements : MonoBehaviour
     {
-        var events = FindObjectOfType<EventManager>();
+        public GameObject levelElements;
+    
+        public void Start()
+        {
+            var events = FindObjectOfType<EventManager>();
         
-        events.Register(Helpers.OnEvent("lever-up", _ => levelElements.SetActive(true)));
-        events.Register(Helpers.OnEvent("lever-down", _ => levelElements.SetActive(false)));
+            events.Register(Helpers.OnEvent("lever-up", _ => levelElements.SetActive(true)));
+            events.Register(Helpers.OnEvent("lever-down", _ => levelElements.SetActive(false)));
+        }
     }
 }

@@ -1,4 +1,4 @@
-namespace Core.EventHandlers.Handlers
+namespace Core.InputEventHandlers.Handlers
 {
     public class SinglePressHandler : InputHandler
     {

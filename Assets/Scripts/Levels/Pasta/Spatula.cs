@@ -1,23 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Spatula : MonoBehaviour
+namespace Levels.Pasta
 {
-    public bool isLeft;
-    private SpriteRenderer _renderer;
-
-    void Start()
+    public class Spatula : MonoBehaviour
     {
-        _renderer = GetComponent<SpriteRenderer>();
-    }
+        public bool isLeft;
+        private SpriteRenderer _renderer;
 
-    public void Update()
-    {
-        var lidOpen = FindObjectOfType<Levels.Pasta.SpaghettiLevel>().lidOpen;
+        void Start()
+        {
+            _renderer = GetComponent<SpriteRenderer>();
+        }
 
-        var keyCode = isLeft ? KeyCode.LeftArrow : KeyCode.RightArrow;
+        public void Update()
+        {
+            var lidOpen = FindObjectOfType<Levels.Pasta.SpaghettiLevelController>().lidOpen;
 
-        _renderer.enabled = Input.GetKey(keyCode) && lidOpen;// && Input.GetKey(KeyCode.K);
+            var keyCode = isLeft ? KeyCode.LeftArrow : KeyCode.RightArrow;
+
+            _renderer.enabled = Input.GetKey(keyCode) && lidOpen;// && Input.GetKey(KeyCode.K);
+        }
     }
 }

@@ -1,11 +1,12 @@
-using Core.EventHandlers;
-using Core.EventHandlers.Handlers;
+using Core;
+using Core.InputEventHandlers;
+using Core.Levels;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Levels.Pasta
 {
-    public class SpaghettiLevel : Level
+    public class SpaghettiLevelController : LevelController
     {
         private BuzzSoundsScript _buzzer;
 

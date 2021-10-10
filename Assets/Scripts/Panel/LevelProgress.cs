@@ -1,21 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using Levels;
+using Core.Levels;
 using UnityEngine;
 
-public class LevelProgress : MonoBehaviour
+namespace Panel
 {
-    private Level _level;
-
-    public void Start()
+    public class LevelProgress : MonoBehaviour
     {
-        _level = FindObjectOfType<Level>();
-    }
+        private LevelController _levelController;
 
-    public void Update()
-    {
-        var p = transform.position;
-        p.x = 7 * _level.levelGoing / _level.fullLevelTime;
-        transform.position = p;
+        public void Start()
+        {
+            _levelController = FindObjectOfType<LevelController>();
+        }
+
+        public void Update()
+        {
+            var p = transform.position;
+            p.x = 7 * _levelController.levelGoing / _levelController.fullLevelTime;
+            transform.position = p;
+        }
     }
 }

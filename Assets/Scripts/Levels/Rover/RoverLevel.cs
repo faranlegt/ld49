@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core.EventHandlers;
-using Core.EventHandlers.Handlers;
+using Core;
+using Core.InputEventHandlers;
+using Core.Levels;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Levels.Rover
 {
-    public class RoverLevel : Level
+    public class RoverLevelController : LevelController
     {
         private BuzzSoundsScript _buzzer;
         public override bool IsFailing => broken.Any() || (isStorm && !Input.GetKey(KeyCode.E)) || panelDust;

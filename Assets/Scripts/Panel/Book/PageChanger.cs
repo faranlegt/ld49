@@ -1,28 +1,27 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Panel;
 using UnityEngine;
 
-public class PageChanger : MonoBehaviour
+namespace Panel.Book
 {
-    public bool left = false;
-    private Book _book;
-
-    public void Start()
+    public class PageChanger : MonoBehaviour
     {
-        _book = GetComponentInParent<Book>();
-    }
+        public bool left = false;
+        private Book _book;
 
-    private void OnMouseDown()
-    {
-        if (left)
+        public void Start()
         {
-            _book.Prev();
+            _book = GetComponentInParent<Book>();
         }
-        else
+
+        private void OnMouseDown()
         {
-            _book.Next();
+            if (left)
+            {
+                _book.Prev();
+            }
+            else
+            {
+                _book.Next();
+            }
         }
     }
 }

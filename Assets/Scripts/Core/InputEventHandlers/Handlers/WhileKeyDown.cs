@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core.EventHandlers.Handlers
+namespace Core.InputEventHandlers.Handlers
 {
     public class WhileKeyDown : InputHandler
     {

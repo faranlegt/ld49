@@ -12,5 +12,7 @@ namespace Core.Levels
         public GameObject elementsPrefab;
 
         public Sprite intro;
+
+        public Sprite[] pages;
     }
 }

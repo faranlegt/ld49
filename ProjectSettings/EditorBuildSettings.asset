@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Rover.unity
     guid: 0ba3e8c6f887a4470ac090277b4f1002
+  - enabled: 1
+    path: Assets/Scenes/LevelBase.unity
+    guid: 8681dfb48ea4d4bb5a295383f603c798
   m_configObjects: {}

@@ -1,5 +1,6 @@
 using System;
 using Levels;
+using Panel.Book;
 using UnityEngine;
 
 namespace Core.Levels
@@ -35,6 +36,15 @@ namespace Core.Levels
             // change photos
             GameObject.FindWithTag("LevelPhoto").GetComponent<SpriteRenderer>().sprite = LevelToLoad.photo;
             GameObject.FindWithTag("Intro").GetComponent<SpriteRenderer>().sprite = LevelToLoad.intro;
+
+            
+        }
+
+        private void Start()
+        {
+            var book = FindObjectOfType<Book>(); 
+            book.pages = LevelToLoad.pages;
+            book.gameObject.SetActive(false);
         }
     }
 }

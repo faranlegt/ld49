@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 02d77f55432b345d1982c97dd6de31b1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Pasta.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Rover.unity
     guid: 0ba3e8c6f887a4470ac090277b4f1002
   m_configObjects: {}
